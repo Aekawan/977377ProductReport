@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <title>Products Report</title>
+    <!--Font !-->
+    <link href="https://fonts.googleapis.com/css?family=Kanit" rel="stylesheet">
+    <style media="screen">
+      body{
+        font-family: 'Kanit', sans-serif;
+      }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Products Report</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center" style="margin-bottom:10px">
+                <h2>Product Report</h2>
+            </div>
+  <!-- /input-group -->
+            </div>
+          <div class="row form-group">
+            <div class="col-md-3 text-right" style="margin-top:7px;">
+              <label for="sel1">Search by:</label>
+            </div>
+           <div class="col-md-3">
+             <div class="form-group">
+                 <select class="form-control" id="selection">
+ <option value="ALL">ShowAll Product</option>
+ <option value="ProductID">Product ID</option>
+ <option value="Name">Product Name</option>
+ <option value="ProductCategoryID">Product Catagory</option>
+</select>
+             </div>
+
+ </div>
+
+           <div class="col-md-3">
+             <div class="input-group">
+                 <input id="productname" type="text" class="form-control" placeholder="Input Product Name">
+                 <span class="input-group-btn">
+     <button id="btnSearch" class="btn btn-info" type="button" onclick="Search()">Search</button>
+   </span>
+             </div>
+
+   </div>
+
+         </div>
+
+            <div class="col-md-12">
+                <div class="table-responsive" id="headtable">
+                  <div class="col-md-12 text-center"><h2>ป้อน ID /ชื่อ/ID แคตาล็อต ของสินค้าที่คุณต้องการค้นหา</h2></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript">
+    $('select').change(function () {
+   var optionSelected = $(this).find("option:selected");
+   var valueSelected  = optionSelected.val();
+   if(valueSelected == 'ALL'){
+      $('#productname').val('');
+      $('#productname').prop('disabled', true);
+      $('#btnSearch').prop('disabled', true);
+      $('#headtable').html('<div class="col-md-12 text-center" style="margin-top:80px;"><img src="ring-alt.svg"></div>');
+      let Select = "Products";
+      let ProductsSearch = "";
+      getProduct(Select, ProductsSearch);
+   }else {
+      $('#productname').prop('disabled', false);
+      $('#btnSearch').prop('disabled', false);
+   }
+});
+    $('#headtable').html('<div class="col-md-12 text-center" style="margin-top:80px;"><img src="ring-alt.svg"></div>');
+    $('#productname').prop('disabled', true);
+    $('#btnSearch').prop('disabled', true);
+    let Select = "Products";
+    let ProductsSearch = "";
+    getProduct(Select, ProductsSearch);
+    </script>
+</body>
+
+</html>
